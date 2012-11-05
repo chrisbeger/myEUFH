@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  UILecturesControl.h
 //  myEUFH
 //
 //  Created by Christoph Beger on 18.10.12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface UILecturesControl : UITableViewController
 
 @end

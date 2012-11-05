@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  UICustomNavigationBar.h
 //  myEUFH
 //
 //  Created by Christoph Beger on 18.10.12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface UICustomNavigationBar : UINavigationBar
 
 @end

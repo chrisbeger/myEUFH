@@ -13,9 +13,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    //[[UINavigationBar appearance] setBackgroundColor:[[UIColor alloc] initWithRed:244 green:158 blue:0 alpha:0.5]];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:244/255.0 green:157/255.0 blue:0/255.0 alpha:1.0]];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeSound)];
+    
+    NSLog(@"Registering Remote Notications");
+
+    
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	NSLog(@"devToken=%@",deviceToken);
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+	NSLog(@"Error in registration. Error: %@", err);
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -41,6 +56,13 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSUserDefaults *defaults;
+    defaults = [NSUserDefaults standardUserDefaults];
+    if ([[defaults objectForKey:@"myeufh_remember"] integerValue] != 1) {
+        [defaults removeObjectForKey:@"myeufh_userid"];
+        [defaults removeObjectForKey:@"myeufh_userpw"];
+        [defaults removeObjectForKey:@"myeufh_userlogin"];
+    }
 }
 
 @end
